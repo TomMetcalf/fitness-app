@@ -9,9 +9,7 @@ function Home() {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch(
-        'https://fitness-app-backend-pb8f.onrender.com/api/workouts'
-      );
+      const response = await fetch('/api/workouts');
       const json = await response.json();
 
       if (response.ok) {
