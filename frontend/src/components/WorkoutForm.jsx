@@ -48,6 +48,7 @@ function WorkoutForm() {
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        id="text-input"
         className={emptyFields.includes('title') ? 'error' : ''}
       />
       <label htmlFor="load">Load (in kg):</label>
