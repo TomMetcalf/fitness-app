@@ -53,7 +53,7 @@ function WorkoutForm() {
       <label htmlFor="load">Load (in kg):</label>
       <input
         name="load"
-        type="text"
+        type="number"
         onChange={(e) => setLoad(e.target.value)}
         value={load}
         className={emptyFields.includes('load') ? 'error' : ''}
@@ -61,7 +61,7 @@ function WorkoutForm() {
       <label htmlFor="reps">Reps:</label>
       <input
         name="reps"
-        type="text"
+        type="number"
         onChange={(e) => setReps(e.target.value)}
         value={reps}
         className={emptyFields.includes('reps') ? 'error' : ''}
