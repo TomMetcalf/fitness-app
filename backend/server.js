@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://fitness-app-backend-pb8f.onrender.com',
+    origin: 'https://fitness-app-gv41.onrender.com/',
   })
 );
 
