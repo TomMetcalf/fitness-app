@@ -35,7 +35,7 @@ header a {
 /* homepage */
 .home {
   display: grid;
-  grid-template-areas: "form";
+  grid-template-areas: 'form';
 }
 .workout-details {
   background: #fff;
@@ -67,7 +67,14 @@ header a {
 }
 
 .workout-details span.edit_note {
-  right: 65px; 
+  right: 65px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 /* new workout form */
@@ -84,7 +91,7 @@ input {
   box-sizing: border-box;
 }
 #text-input {
-  width: 20%
+  width: 20%;
 }
 form button {
   background: var(--primary);
@@ -120,7 +127,8 @@ input.error {
 }
 
 @media (max-width: 750px) {
-  input, #text-input {
+  input,
+  #text-input {
     width: 100%;
   }
 }

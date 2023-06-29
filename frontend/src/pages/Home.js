@@ -25,15 +25,17 @@ function Home() {
   return (
     <div className="home">
       {loading ? (
-        <FadeLoader
-          color={'#000'}
-          loading={loading}
-          size={100}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-          height={30}
-          margin={30}
-        />
+        <div className="loader-container">
+          <FadeLoader
+            color={'#000'}
+            loading={loading}
+            size={100}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            height={30}
+            margin={30}
+          />
+        </div>
       ) : (
         <div className="workouts">
           {workouts &&
