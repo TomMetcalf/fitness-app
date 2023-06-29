@@ -67,6 +67,10 @@ header a {
   color: #333;
 }
 
+.workout-details span.edit_note {
+  right: 70px; 
+}
+
 /* new workout form */
 label,
 input {
@@ -100,4 +104,16 @@ div.error {
 }
 input.error {
   border: 1px solid var(--error);
+}
+
+/* editable item */
+.editBtn {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  margin-right: 20px;
+  font-family: 'Poppins';
+  border-radius: 4px;
+  cursor: pointer;
 }
