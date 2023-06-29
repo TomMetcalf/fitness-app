@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useWorkoutContext } from '../hooks/useWorkoutsContext';
-
+import FadeLoader from 'react-spinners/FadeLoader';
 import WorkoutDetails from '../components/WorkoutDetails';
 import WorkoutForm from '../components/WorkoutForm';
 
 function Home() {
+  let [loading, setLoading] = useState(true);
   const { workouts, dispatch } = useWorkoutContext();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ function Home() {
       if (response.ok) {
         dispatch({ type: 'SET_WORKOUTS', payload: json });
       }
+      setLoading(false);
     };
 
     fetchWorkouts();
@@ -22,12 +24,24 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="workouts">
-        {workouts &&
-          workouts.map((workout) => (
-            <WorkoutDetails key={workout._id} workout={workout} />
-          ))}
-      </div>
+      {loading ? (
+        <FadeLoader
+          color={'#000'}
+          loading={loading}
+          size={100}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          height={30}
+          margin={30}
+        />
+      ) : (
+        <div className="workouts">
+          {workouts &&
+            workouts.map((workout) => (
+              <WorkoutDetails key={workout._id} workout={workout} />
+            ))}
+        </div>
+      )}
       <WorkoutForm />
     </div>
   );
