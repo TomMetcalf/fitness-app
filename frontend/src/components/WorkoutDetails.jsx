@@ -101,9 +101,7 @@ function WorkoutDetails({ workout }) {
             <strong>Reps: </strong>
             {workout.reps}
           </p>
-          <p>
-            {dateFormat(workout.createdAt, 'dddd mmmm dS yyyy, h:MM TT')}
-          </p>
+          <p>{dateFormat(workout.createdAt, 'dddd mmmm dS yyyy, h:MM TT')}</p>
         </>
       )}
 

@@ -102,6 +102,18 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.calendarBtn {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Poppins';
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -128,14 +140,19 @@ nav button {
   border: 2px solid var(--primary);
   padding: 6px 10px;
   border-radius: 4px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   cursor: pointer;
   font-size: 1em;
   margin-left: 10px;
 }
 
+div.logout {
+  text-align: end;
+}
+
 /* auth forms */
-form.signup, form.login {
+form.signup,
+form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
@@ -143,16 +160,17 @@ form.signup, form.login {
   border-radius: 4px;
 }
 
-form.signup input, form.login input {
+form.signup input,
+form.login input {
   width: 100%;
   margin: 10px auto;
 }
 
-form.signup button, form.login button {
+form.signup button,
+form.login button {
   width: 100%;
   margin-top: 10px;
 }
-
 
 /* editable item */
 .editBtn {
@@ -173,18 +191,16 @@ form.signup button, form.login button {
     margin: 10px 10px 20px 0px;
   }
 
-  nav a {
-  display: inline-block;
-  margin-top: 10px;
-}
+  nav button {
+    margin-top: 10px;
+  }
 
-nav button {
-  margin-top: 10px;
-  margin-left: 0;
-}
+  span {
+    font-size: small;
+  }
 
-span {
-  font-size: small;
-}
-  
+  .calendar-container {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
