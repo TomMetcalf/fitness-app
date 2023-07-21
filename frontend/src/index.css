@@ -72,9 +72,14 @@ header a {
 
 .loader-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+}
+
+.loading-text {
+  margin-top: 30px;
 }
 
 /* new workout form */

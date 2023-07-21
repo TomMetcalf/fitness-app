@@ -61,6 +61,9 @@ function Home() {
             height={30}
             margin={30}
           />
+          <div className="loading-text">
+            <p>Loading workouts</p>
+          </div>
         </div>
       ) : (
         <>
