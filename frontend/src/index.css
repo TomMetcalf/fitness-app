@@ -156,5 +156,10 @@ form.signup input, form.login input {
     width: 100%;
     margin: 10px 10px 20px 0px;
   }
+
+  nav a {
+  display: inline-block;
+  margin-top: 10px;
+}
   
 }
