@@ -1,17 +1,27 @@
 import { useState } from 'react';
 import { useWorkoutContext } from '../hooks/useWorkoutsContext';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function WorkoutDetails({ workout }) {
   const { dispatch } = useWorkoutContext();
+  const { user } = useAuthContext();
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(workout.title);
   const [editedLoad, setEditedLoad] = useState(workout.load);
   const [editedReps, setEditedReps] = useState(workout.reps);
 
   const handleClickDelete = async () => {
+    if (!user) {
+      return;
+    }
+
     const response = await fetch('/api/workouts/' + workout._id, {
       method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
 
@@ -21,15 +31,23 @@ function WorkoutDetails({ workout }) {
   };
 
   const handleClickEdit = () => {
+    if (!user) {
+      return;
+    }
+
     setIsEditing(true);
   };
 
   const handleSaveChanges = async () => {
+    if (!user) {
+      return;
+    }
 
     const response = await fetch('/api/workouts/' + workout._id, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify({
         title: editedTitle,
