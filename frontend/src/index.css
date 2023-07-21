@@ -122,6 +122,17 @@ nav {
 nav a {
   margin-left: 10px;
 }
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;
@@ -136,6 +147,10 @@ form.signup input, form.login input {
   margin: 10px auto;
 }
 
+form.signup button, form.login button {
+  width: 100%;
+  margin-top: 10px;
+}
 
 
 /* editable item */
