@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useWorkoutContext } from '../hooks/useWorkoutsContext';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import dateFormat from 'dateformat';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 function WorkoutDetails({ workout }) {
@@ -102,9 +102,7 @@ function WorkoutDetails({ workout }) {
             {workout.reps}
           </p>
           <p>
-            {formatDistanceToNow(new Date(workout.createdAt), {
-              addSuffix: true,
-            })}
+            {dateFormat(workout.createdAt, 'dddd mmmm dS yyyy, h:MM TT')}
           </p>
         </>
       )}

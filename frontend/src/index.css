@@ -177,5 +177,14 @@ form.signup button, form.login button {
   display: inline-block;
   margin-top: 10px;
 }
+
+nav button {
+  margin-top: 10px;
+  margin-left: 0;
+}
+
+span {
+  font-size: small;
+}
   
 }
