@@ -208,4 +208,19 @@ form.login button {
     display: flex;
     justify-content: flex-end;
   }
+
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+  }
+
+  a {
+    margin-top: 10px;
+  }
+
+  h1 {
+    font-size: x-large;
+  }
+
 }
