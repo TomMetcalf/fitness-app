@@ -8,9 +8,18 @@ https://fitness-app-gv41.onrender.com/
 
 NOTE: Please allow some time for the inital data to load, as it may be slow due to being hosted on Renders free tier. Thank you for your patience.
 
+You will need to be logged in to view workout data, as it is linked to the user.
+
+You may log in with the following credentials.
+
+Email: tomemetcalf@gmail.com
+Password: ABCabc123!
+
 ## Tech
 
-This project was built using the MERN stack. MongoDb, Express, React & Node.js
+This project was built using the MERN stack. MongoDb, Express, React & Node.js.
+
+It uses JSON Web Tokens (JWT) for user authentification.
 
 ## Local Setup Instructions
 
