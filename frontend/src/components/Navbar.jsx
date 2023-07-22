@@ -18,13 +18,13 @@ function Navbar() {
         </Link>
         <nav>
           {user && (
-            <div className='logout'>
+            <div className="logout">
               <span>{user.email}</span>
               <button onClick={handleClick}>Log out</button>
             </div>
           )}
           {!user && (
-            <div className='navbar-links'>
+            <div className="navbar-links">
               <Link to="/signup">Sign Up</Link>
               <Link to="/login">Log In</Link>
             </div>
