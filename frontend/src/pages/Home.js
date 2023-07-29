@@ -48,6 +48,14 @@ function Home() {
       )
     : [];
 
+    function hasWorkoutsForDate(workouts, date) {
+      const dateString = dateFormat(date, 'ddd mmm d yyyy');
+      return workouts.some(
+        (workout) =>
+          dateString === dateFormat(workout.createdAt, 'ddd mmm d yyyy')
+      );
+    }
+
   return (
     <div className="home">
       {loading ? (
@@ -75,7 +83,15 @@ function Home() {
             </div>
             {isOpen && (
               <div className="calendar">
-                <Calendar onChange={onChange} value={value} />
+                <Calendar
+                  onChange={onChange}
+                  value={value}
+                  tileContent={({ date, view }) =>
+                    view === 'month' && hasWorkoutsForDate(workouts, date) ? (
+                      <div className="has-workout-marker"></div>
+                    ) : null
+                  }
+                />
               </div>
             )}
           </div>
