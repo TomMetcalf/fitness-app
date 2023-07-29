@@ -70,7 +70,7 @@ function Home() {
             margin={30}
           />
           <div className="loading-text">
-            <p>Loading workouts</p>
+            <p>Loading workouts...</p>
           </div>
         </div>
       ) : (
