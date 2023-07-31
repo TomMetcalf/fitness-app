@@ -6,6 +6,15 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
+
+#light {
+  background: #ddd;
+}
+
+#dark {
+  background: #333;
+}
+
 body {
   background: #f1f1f1;
   margin: 0;
@@ -30,6 +39,15 @@ header a {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+}
+
+#dark header .container {
+  background: #3a3a3a;
+}
+
+#dark header a {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* homepage */
@@ -132,6 +150,38 @@ input.error {
   border: 1px solid var(--error);
 }
 
+#light .workout-label {
+  color: #3a3a3a
+}
+
+#dark h3, .workout-label{
+  color: #fff
+}
+
+#dark input {
+  background-color: #3a3a3a;
+  color: white;
+}
+
+#dark div.workout-details {
+  background-color: #424242;
+  color: white;
+}
+
+#dark p {
+  color: white;
+}
+
+#dark .user-email {
+color: white;
+}
+
+#dark button.logout {
+  background: var(--primary);
+  border: 1;
+  color: #fff;
+}
+
 /* navbar */
 nav {
   display: flex;
@@ -197,6 +247,23 @@ form.login button {
   border-radius: 50%;
   margin: 0 auto;
   margin-top: 2px;
+}
+
+.switch {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 20px;
+
+}
+
+.switch label {
+margin-right: 10px;
+}
+
+#dark .switch label {
+color: white;
+margin-right: 10px;
 }
 
 @media (max-width: 750px) {

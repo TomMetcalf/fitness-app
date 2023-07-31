@@ -50,7 +50,9 @@ function WorkoutForm() {
   return (
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
-      <label htmlFor="title">Exercise Title:</label>
+      <label className="workout-label" htmlFor="title">
+        Exercise Title:
+      </label>
       <input
         name="title"
         type="text"
@@ -59,7 +61,9 @@ function WorkoutForm() {
         id="text-input"
         className={emptyFields.includes('title') ? 'error' : ''}
       />
-      <label htmlFor="load">Load (in kg):</label>
+      <label className="workout-label" htmlFor="load">
+        Load (in kg):
+      </label>
       <input
         name="load"
         type="number"
@@ -67,7 +71,9 @@ function WorkoutForm() {
         value={load}
         className={emptyFields.includes('load') ? 'error' : ''}
       />
-      <label htmlFor="reps">Reps:</label>
+      <label className="workout-label" htmlFor="reps">
+        Reps:
+      </label>
       <input
         name="reps"
         type="number"

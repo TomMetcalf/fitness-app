@@ -19,8 +19,8 @@ function Navbar() {
         <nav>
           {user && (
             <div className="logout">
-              <span>{user.email}</span>
-              <button onClick={handleClick}>Log out</button>
+              <span className='user-email'>{user.email}</span>
+              <button className='logout' onClick={handleClick}>Log out</button>
             </div>
           )}
           {!user && (
