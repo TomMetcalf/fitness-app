@@ -7,7 +7,7 @@ export default function LightModeToggle({ toggleTheme, theme }) {
       <Switch
         onChange={toggleTheme}
         checked={theme === 'dark'}
-        onColor="##424242"
+        onColor="#424242"
         offColor="#fff"
         offHandleColor="#1aac83"
         onHandleColor="#1aac83"
