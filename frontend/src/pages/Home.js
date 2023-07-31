@@ -135,6 +135,16 @@ function Home({theme}) {
           </div>
           <div className="totals">
             <h3>Daily Totals</h3>
+            {selectedTotal && (
+              <div className="selected-total">
+                <p className="total-reps">
+                  Total Reps:{' '}
+                  <span className="total-reps">
+                    {getSelectedTotalReps(selectedTotal)}
+                  </span>
+                </p>
+              </div>
+            )}
             <select
               className="workout-totals"
               value={selectedTotal}
@@ -153,16 +163,6 @@ function Home({theme}) {
                 </option>
               ))}
             </select>
-            {selectedTotal && (
-              <div className="selected-total">
-                <p>
-                  Total Reps:{' '}
-                  <span className="total-reps">
-                    {getSelectedTotalReps(selectedTotal)}
-                  </span>
-                </p>
-              </div>
-            )}
           </div>
         </>
       )}

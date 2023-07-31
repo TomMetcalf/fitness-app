@@ -299,7 +299,7 @@ select.weight-unit, select.workout-totals {
   margin-bottom: 9px;
 }
 
-#dark select.weight-unit, select.workout-totals {
+#dark select.weight-unit, #dark select.workout-totals {
   border-radius: 5px;
   background-color: #424242;
   color: white;
