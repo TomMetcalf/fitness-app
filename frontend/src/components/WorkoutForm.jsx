@@ -11,6 +11,7 @@ function WorkoutForm() {
   const [reps, setReps] = useState('');
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
+  const [weightUnit, setWeightUnit] = useState('kg');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ function WorkoutForm() {
       return;
     }
 
-    const workout = { title, load, reps };
+    const workout = { title, load, weightUnit, reps };
 
     const response = await fetch('/api/workouts', {
       method: 'POST',
@@ -41,6 +42,7 @@ function WorkoutForm() {
       setTitle('');
       setLoad('');
       setReps('');
+      setWeightUnit('kg')
       setError(null);
       setEmptyFields([]);
       dispatch({ type: 'CREATE_WORKOUT', payload: json });
@@ -62,7 +64,15 @@ function WorkoutForm() {
         className={emptyFields.includes('title') ? 'error' : ''}
       />
       <label className="workout-label" htmlFor="load">
-        Load (in kg):
+        Load <select
+          name="weight-unit"
+          onChange={(e) => setWeightUnit(e.target.value)}
+          value={weightUnit}
+        >
+          <option value="kg">kg</option>
+          <option value="lbs">lbs</option>
+          <option value="bodyweight">bodyweight</option>
+        </select> :
       </label>
       <input
         name="load"

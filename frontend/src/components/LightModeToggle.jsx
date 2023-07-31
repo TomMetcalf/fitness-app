@@ -21,7 +21,7 @@ export default function LightModeToggle({ toggleTheme, theme }) {
               fontSize: 20,
               color: 'white',
             }}
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
           >
             dark_mode
           </span>
@@ -35,7 +35,7 @@ export default function LightModeToggle({ toggleTheme, theme }) {
               height: '100%',
               fontSize: 20,
             }}
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
           >
             light_mode
           </span>

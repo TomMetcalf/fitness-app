@@ -94,7 +94,7 @@ function WorkoutDetails({ workout }) {
         <>
           <h4>{workout.title}</h4>
           <p>
-            <strong>Load (kg): </strong>
+            <strong>Load ({workout.weightUnit}): </strong>
             {workout.load}
           </p>
           <p>
