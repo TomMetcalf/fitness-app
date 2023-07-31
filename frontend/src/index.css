@@ -45,8 +45,12 @@ header a {
 
 .pages, div.switch {
   max-width: 1400px;
-  padding: 20px;
+  padding: 20px 20px 0px;
   margin: 0 auto;
+}
+
+div.pages {
+  padding: 0px 20px;
 }
 
 #dark header .container {
@@ -166,11 +170,13 @@ input.error {
 }
 
 #light h3 {
-  color: #3a3a3a
+  color: #3a3a3a;
+  margin-top: 0px;
 }
 
 #dark h3 {
-  color: #fff
+  color: #fff;
+  margin-top: 0px;
 }
 
 #light .workout-label {
@@ -303,6 +309,10 @@ select.weight-unit, select.workout-totals {
   border-radius: 5px;
   background-color: #424242;
   color: white;
+}
+
+select.workout-totals {
+  margin-bottom: 70px;
 }
 
 .weight-unit {
