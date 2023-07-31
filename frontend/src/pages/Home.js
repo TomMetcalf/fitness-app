@@ -14,6 +14,7 @@ function Home() {
   const { user } = useAuthContext();
   const [value, onChange] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedTotal, setSelectedTotal] = useState(null);
 
   const valueStr = String(value).substring(0, 15);
 
@@ -75,6 +76,15 @@ function Home() {
 
   filteredWorkoutTotalArray.sort((a, b) => a.title.localeCompare(b.title));
 
+  const getSelectedTotalReps = (selectedTotalKey) => {
+    const selectedTotalData = filteredWorkoutTotalArray.find(
+      (total) =>
+        `${total.title}_${total.load}_${total.weightUnit}_total` ===
+        selectedTotalKey
+    );
+    return selectedTotalData ? selectedTotalData.totalReps : 0;
+  };
+
   return (
     <div className="home">
       {loading ? (
@@ -125,18 +135,34 @@ function Home() {
           </div>
           <div className="totals">
             <h3>Daily Totals</h3>
-            {filteredWorkoutTotalArray.map((total) => (
-              <div
-                key={`${total.title}_${total.load}_${total.weightUnit}_total`}
-              >
+            <select
+              className="workout-totals"
+              value={selectedTotal}
+              onChange={(e) => setSelectedTotal(e.target.value)}
+            >
+              <option value="">Select a workout</option>
+              {filteredWorkoutTotalArray.map((total) => (
+                <option
+                  key={`${total.title}_${total.load}_${total.weightUnit}_total`}
+                  value={`${total.title}_${total.load}_${total.weightUnit}_total`}
+                >
+                  {total.title} -{' '}
+                  {total.weightUnit === 'bodyweight'
+                    ? 'Bodyweight'
+                    : `${total.load} ${total.weightUnit}`}
+                </option>
+              ))}
+            </select>
+            {selectedTotal && (
+              <div className="selected-total">
                 <p>
-                  {total.title} - {total.load} {total.weightUnit}{' '}
-                </p>
-                <p>
-                  Total Reps: <span className='total-reps'>{total.totalReps}</span>
+                  Total Reps:{' '}
+                  <span className="total-reps">
+                    {getSelectedTotalReps(selectedTotal)}
+                  </span>
                 </p>
               </div>
-            ))}
+            )}
           </div>
         </>
       )}
