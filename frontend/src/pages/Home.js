@@ -48,13 +48,32 @@ function Home() {
       )
     : [];
 
-    function hasWorkoutsForDate(workouts, date) {
-      const dateString = dateFormat(date, 'ddd mmm d yyyy');
-      return workouts.some(
-        (workout) =>
-          dateString === dateFormat(workout.createdAt, 'ddd mmm d yyyy')
-      );
+  function hasWorkoutsForDate(workouts, date) {
+    const dateString = dateFormat(date, 'ddd mmm d yyyy');
+    return workouts.some(
+      (workout) =>
+        dateString === dateFormat(workout.createdAt, 'ddd mmm d yyyy')
+    );
+  }
+
+  const filteredWorkoutTotals = filteredWorkouts.reduce((totals, workout) => {
+    const key = `${workout.title}_${workout.load}_${workout.weightUnit}`;
+    if (!totals[key]) {
+      totals[key] = {
+        title: workout.title,
+        load: workout.load,
+        weightUnit: workout.weightUnit,
+        totalReps: workout.reps,
+      };
+    } else {
+      totals[key].totalReps += workout.reps;
     }
+    return totals;
+  }, {});
+
+  const filteredWorkoutTotalArray = Object.values(filteredWorkoutTotals);
+
+  filteredWorkoutTotalArray.sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <div className="home">
@@ -103,6 +122,21 @@ function Home() {
                 <WorkoutDetails key={workout._id} workout={workout} />
               ))
             )}
+          </div>
+          <div className="totals">
+            <h3>Daily Totals</h3>
+            {filteredWorkoutTotalArray.map((total) => (
+              <div
+                key={`${total.title}_${total.load}_${total.weightUnit}_total`}
+              >
+                <p>
+                  {total.title} - {total.load} {total.weightUnit}{' '}
+                </p>
+                <p>
+                  Total Reps: <span className='total-reps'>{total.totalReps}</span>
+                </p>
+              </div>
+            ))}
           </div>
         </>
       )}

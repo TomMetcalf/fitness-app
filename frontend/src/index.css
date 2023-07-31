@@ -96,6 +96,11 @@ header a {
   right: 65px;
 }
 
+span.total-reps {
+  font-weight: 600;
+  font-size: medium;
+}
+
 .loader-container {
   display: flex;
   flex-direction: column;
@@ -145,7 +150,7 @@ form button {
   font-family: 'Poppins';
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 10px 0px;
 }
 
 div.error {
@@ -421,6 +426,11 @@ select.weight-unit {
 /* Media Queries */
 @media (max-width: 842px) {
   .calendar-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  div.calendar {
     display: flex;
     justify-content: flex-end;
   }
