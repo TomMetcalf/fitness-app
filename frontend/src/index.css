@@ -114,9 +114,11 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 #text-input {
   width: 20%;
 }
+
 form button {
   background: var(--primary);
   border: 0;
@@ -150,11 +152,19 @@ input.error {
   border: 1px solid var(--error);
 }
 
+#light h3 {
+  color: #3a3a3a
+}
+
+#dark h3 {
+  color: #fff
+}
+
 #light .workout-label {
   color: #3a3a3a
 }
 
-#dark h3, .workout-label{
+#dark .workout-label {
   color: #fff
 }
 
@@ -266,6 +276,34 @@ color: white;
 margin-right: 10px;
 }
 
+select.weight-unit {
+  border-radius: 5px;
+  padding: 8px;
+  border: none;
+  color: #424242;
+  padding-top: 7px;
+  padding-bottom: 9px;
+  margin-bottom: 9px;
+}
+
+#dark select.weight-unit {
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #424242;
+  color: white;
+}
+
+.weight-unit {
+  font-size: 1em;
+}
+
+@media (max-width: 842px) {
+  .calendar-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 @media (max-width: 750px) {
   input,
   #text-input {
@@ -279,11 +317,6 @@ margin-right: 10px;
 
   span {
     font-size: small;
-  }
-
-  .calendar-container {
-    display: flex;
-    justify-content: flex-end;
   }
 
   .navbar-links {

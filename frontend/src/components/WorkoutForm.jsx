@@ -42,7 +42,7 @@ function WorkoutForm() {
       setTitle('');
       setLoad('');
       setReps('');
-      setWeightUnit('kg')
+      setWeightUnit('kg');
       setError(null);
       setEmptyFields([]);
       dispatch({ type: 'CREATE_WORKOUT', payload: json });
@@ -64,20 +64,34 @@ function WorkoutForm() {
         className={emptyFields.includes('title') ? 'error' : ''}
       />
       <label className="workout-label" htmlFor="load">
-        Load <select
+        Load{' '}
+        <select
+          className="weight-unit"
           name="weight-unit"
-          onChange={(e) => setWeightUnit(e.target.value)}
+          onChange={(e) => {
+            setWeightUnit(e.target.value);
+            if (e.target.value === 'bodyweight') {
+              setLoad('0');
+            }
+          }}
           value={weightUnit}
         >
           <option value="kg">kg</option>
           <option value="lbs">lbs</option>
           <option value="bodyweight">bodyweight</option>
-        </select> :
+        </select>{' '}
+        :
       </label>
       <input
         name="load"
         type="number"
-        onChange={(e) => setLoad(e.target.value)}
+        onChange={(e) => {
+          if (weightUnit === 'bodyweight') {
+            setLoad(e.target.value !== '0' ? e.target.value : '');
+          } else {
+            setLoad(e.target.value);
+          }
+        }}
         value={load}
         className={emptyFields.includes('load') ? 'error' : ''}
       />

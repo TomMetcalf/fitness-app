@@ -10,6 +10,7 @@ function WorkoutDetails({ workout }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(workout.title);
   const [editedLoad, setEditedLoad] = useState(workout.load);
+  const [editedWeightUnit, setEditedWeightUnit] = useState(workout.weightUnit)
   const [editedReps, setEditedReps] = useState(workout.reps);
 
   const handleClickDelete = async () => {
@@ -52,6 +53,7 @@ function WorkoutDetails({ workout }) {
       body: JSON.stringify({
         title: editedTitle,
         load: editedLoad,
+        weightUnit: editedWeightUnit,
         reps: editedReps,
       }),
     });
@@ -66,9 +68,12 @@ function WorkoutDetails({ workout }) {
   const handleCancelEdit = () => {
     setEditedTitle(workout.title);
     setEditedLoad(workout.load);
+    setEditedWeightUnit(workout.weightUnit);
     setEditedReps(workout.reps);
     setIsEditing(false);
   };
+
+  const weightUnits = ['kg', 'lbs', 'bodyweight'];
 
   return (
     <div className="workout-details">
@@ -84,6 +89,16 @@ function WorkoutDetails({ workout }) {
             value={editedLoad}
             onChange={(e) => setEditedLoad(e.target.value)}
           />
+          <select className='weight-unit'
+            value={editedWeightUnit}
+            onChange={(e) => setEditedWeightUnit(e.target.value)}
+          >
+            {weightUnits.map((unit) => (
+              <option key={unit} value={unit}>
+                {unit}
+              </option>
+            ))}
+          </select>
           <input
             type="number"
             value={editedReps}
