@@ -4,14 +4,18 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import { useAuthContext } from './hooks/useAuthContext';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import LightModeToggle from './components/LightModeToggle';
 
 export const ThemeContext = createContext(null);
 
 function App() {
   const { user } = useAuthContext();
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+    useEffect(() => {
+      localStorage.setItem('theme', theme);
+    }, [theme]);
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"))
