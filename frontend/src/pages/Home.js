@@ -8,7 +8,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import dateFormat from 'dateformat';
 
-function Home() {
+function Home({theme}) {
   let [loading, setLoading] = useState(true);
   const { workouts, dispatch } = useWorkoutContext();
   const { user } = useAuthContext();
@@ -90,7 +90,7 @@ function Home() {
       {loading ? (
         <div className="loader-container">
           <FadeLoader
-            color={'#000'}
+            color={theme === 'light' ? '#000' : '#fff'}
             loading={loading}
             size={100}
             aria-label="Loading Spinner"

@@ -26,12 +26,14 @@ function App() {
       <div className="App" id={theme}>
         <BrowserRouter>
           <Navbar />
-          <LightModeToggle toggleTheme={toggleTheme} theme={theme}/>
+          <LightModeToggle toggleTheme={toggleTheme} theme={theme} />
           <div className="pages">
             <Routes>
               <Route
                 path="/"
-                element={user ? <Home /> : <Navigate to="/login" />}
+                element={
+                  user ? <Home theme={theme} /> : <Navigate to="/login" />
+                }
               />
               <Route
                 path="/signup"
