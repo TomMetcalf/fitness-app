@@ -45,7 +45,7 @@ header a {
 .pages,
 div.switch {
   max-width: 1400px;
-  padding: 20px;
+  padding: 20px 20px 0px;
   margin: 0 auto;
 }
 
@@ -330,7 +330,7 @@ select.workout-totals {
   margin-bottom: 70px;
 }
 
-.weight-unit {
+.weight-unit, .total-reps {
   font-size: 1em;
 }
 
@@ -457,6 +457,7 @@ select.workout-totals {
   div.calendar {
     display: flex;
     justify-content: flex-end;
+    width: 400px;
   }
 }
 

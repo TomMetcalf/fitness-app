@@ -14,8 +14,7 @@ function Home({ theme }) {
   const { user } = useAuthContext();
   const [value, onChange] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
-
-  const valueStr = String(value).substring(0, 15);
+  const [selectedTotal, setSelectedTotal] = useState('');
 
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -36,10 +35,6 @@ function Home({ theme }) {
       fetchWorkouts();
     }
   }, [dispatch, user]);
-
-  const handleButtonClick = () => {
-    setIsOpen(!isOpen);
-  };
 
 const filteredWorkouts = workouts
   ? workouts.filter((workout) => {
@@ -79,6 +74,30 @@ const filteredWorkouts = workouts
 
   filteredWorkoutTotalArray.sort((a, b) => a.title.localeCompare(b.title));
 
+  const selectedTotalObj = filteredWorkoutTotalArray.find(
+    (total) => total.title === selectedTotal
+  );
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const calendarContainer = document.querySelector('.calendar');
+      if (calendarContainer && !calendarContainer.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  const handleCalendarButtonClick = (event) => {
+    event.stopPropagation();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="home">
       {loading ? (
@@ -100,7 +119,10 @@ const filteredWorkouts = workouts
         <>
           <div>
             <div className="calendar-container">
-              <button className="calendarBtn" onClick={handleButtonClick}>
+              <button
+                className="calendarBtn"
+                onClick={handleCalendarButtonClick}
+              >
                 {isOpen ? 'Close Calendar' : 'Open Calendar'}
               </button>
             </div>
@@ -129,20 +151,32 @@ const filteredWorkouts = workouts
           </div>
           <div className="totals">
             <h3>Daily Totals</h3>
-            {filteredWorkoutTotalArray.map((total) => (
-              <div
-                key={`${total.title}_${total.load}_${total.weightUnit}_total`}
-              >
-                <p>
-                  {total.title} - {total.load !== 0 && `${total.load} `}
-                  {total.weightUnit}
-                </p>
+            {selectedTotal !== '' && selectedTotalObj && (
+              <div>
                 <p>
                   Total Reps:{' '}
-                  <span className="total-reps">{total.totalReps}</span>
+                  <span className="total-reps">
+                    {selectedTotalObj.totalReps}{' '}
+                  </span>
                 </p>
               </div>
-            ))}
+            )}
+            <select
+              className="workout-totals total-reps"
+              value={selectedTotal}
+              onChange={(e) => setSelectedTotal(e.target.value)}
+            >
+              <option value={null}>Select a Total</option>
+              {filteredWorkoutTotalArray.map((total) => (
+                <option
+                  key={`${total.title}_${total.load}_${total.weightUnit}_total`}
+                  value={total.title}
+                >
+                  {total.title} - {total.load !== 0 && `${total.load} `}
+                  {total.weightUnit}
+                </option>
+              ))}
+            </select>
           </div>
         </>
       )}
