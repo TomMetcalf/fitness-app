@@ -16,7 +16,6 @@
 }
 
 body {
-  background: #f1f1f1;
   margin: 0;
   font-family: 'Poppins';
 }
@@ -43,14 +42,11 @@ header a {
   text-decoration: none;
 }
 
-.pages, div.switch {
+.pages,
+div.switch {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
-}
-
-div.pages {
-  padding: 0px 20px;
 }
 
 #dark header .container {
@@ -67,6 +63,7 @@ div.pages {
   display: grid;
   grid-template-areas: 'form';
 }
+
 .workout-details {
   background: #fff;
   border-radius: 4px;
@@ -75,16 +72,19 @@ div.pages {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
@@ -131,6 +131,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 
 #text-input {
   width: 20%;
@@ -180,11 +181,11 @@ input.error {
 }
 
 #light .workout-label {
-  color: #3a3a3a
+  color: #3a3a3a;
 }
 
 #dark .workout-label {
-  color: #fff
+  color: #fff;
 }
 
 #dark input {
@@ -202,7 +203,7 @@ input.error {
 }
 
 #dark .user-email {
-color: white;
+  color: white;
 }
 
 #dark button.logout {
@@ -239,9 +240,18 @@ div.logout {
 form.signup,
 form.login {
   max-width: 400px;
-  margin: 40px auto;
+  margin: 40px auto 100px;
   padding: 20px;
   background: #fff;
+  border-radius: 4px;
+}
+
+#dark form.signup,
+#dark form.login {
+  max-width: 400px;
+  margin: 40px auto 100px;
+  padding: 20px;
+  background-color: #3a3a3a;
   border-radius: 4px;
 }
 
@@ -255,6 +265,10 @@ form.signup button,
 form.login button {
   width: 100%;
   margin-top: 10px;
+}
+
+#dark .form-label {
+  color: white;
 }
 
 /* editable item */
@@ -283,19 +297,19 @@ form.login button {
   justify-content: flex-end;
   margin-top: 10px;
   margin-right: 20px;
-
 }
 
 .switch label {
-margin-right: 10px;
+  margin-right: 10px;
 }
 
 #dark .switch label {
-color: white;
-margin-right: 10px;
+  color: white;
+  margin-right: 10px;
 }
 
-select.weight-unit, select.workout-totals {
+select.weight-unit,
+select.workout-totals {
   border-radius: 5px;
   padding: 8px;
   border: none;
@@ -305,7 +319,8 @@ select.weight-unit, select.workout-totals {
   margin-bottom: 9px;
 }
 
-#dark select.weight-unit, #dark select.workout-totals {
+#dark select.weight-unit,
+#dark select.workout-totals {
   border-radius: 5px;
   background-color: #424242;
   color: white;
@@ -408,7 +423,6 @@ select.workout-totals {
   border-radius: 5px;
 }
 
-
 .react-calendar__tile--active {
   background: #006edc;
   color: white;
@@ -475,4 +489,3 @@ select.workout-totals {
     font-size: x-large;
   }
 }
-
