@@ -10,7 +10,7 @@ function WorkoutDetails({ workout }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(workout.title);
   const [editedLoad, setEditedLoad] = useState(workout.load);
-  const [editedWeightUnit, setEditedWeightUnit] = useState(workout.weightUnit)
+  const [editedWeightUnit, setEditedWeightUnit] = useState(workout.weightUnit);
   const [editedReps, setEditedReps] = useState(workout.reps);
 
   const handleClickDelete = async () => {
@@ -79,17 +79,16 @@ function WorkoutDetails({ workout }) {
     <div className="workout-details">
       {isEditing ? (
         <>
+          <label htmlFor="exercise-title">Exercise Title:</label>
           <input
+            name="exercise-title"
             type="text"
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
           />
-          <input
-            type="number"
-            value={editedLoad}
-            onChange={(e) => setEditedLoad(e.target.value)}
-          />
-          <select className='weight-unit'
+          <label htmlFor="load">Load</label>
+          <select
+            className="weight-unit"
             value={editedWeightUnit}
             onChange={(e) => setEditedWeightUnit(e.target.value)}
           >
@@ -98,8 +97,17 @@ function WorkoutDetails({ workout }) {
                 {unit}
               </option>
             ))}
-          </select>
+          </select>{' '}
+          :
           <input
+            name="load"
+            type="number"
+            value={editedLoad}
+            onChange={(e) => setEditedLoad(e.target.value)}
+          />
+          <label htmlFor="reps">Reps:</label>
+          <input
+            name="reps"
             type="number"
             value={editedReps}
             onChange={(e) => setEditedReps(e.target.value)}
@@ -108,16 +116,10 @@ function WorkoutDetails({ workout }) {
       ) : (
         <>
           <h4>{workout.title}</h4>
-          {workout.weightUnit === 'bodyweight' ? (
-            <p>
-              <strong>Load: </strong>Bodyweight
-            </p>
-          ) : workout.load !== 0 ? (
-            <p>
-              <strong>Load ({workout.weightUnit}): </strong>
-              {workout.load}
-            </p>
-          ) : null}{' '}
+          <p>
+            <strong>Load ({workout.weightUnit}): </strong>
+            {workout.load}
+          </p>
           <p>
             <strong>Reps: </strong>
             {workout.reps}
