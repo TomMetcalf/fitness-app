@@ -116,10 +116,18 @@ function WorkoutDetails({ workout }) {
       ) : (
         <>
           <h4>{workout.title}</h4>
-          <p>
-            <strong>Load ({workout.weightUnit}): </strong>
-            {workout.load}
-          </p>
+          {workout.weightUnit !== 'bodyweight' ? (
+            // Display load with ':'
+            <p>
+              <strong>Load ({workout.weightUnit}): </strong>
+              {workout.load}
+            </p>
+          ) : (
+            // Display load without ':'
+            <p>
+              <strong>Load ({workout.weightUnit})</strong>
+            </p>
+          )}
           <p>
             <strong>Reps: </strong>
             {workout.reps}

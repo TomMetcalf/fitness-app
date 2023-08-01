@@ -41,12 +41,16 @@ function Home({ theme }) {
     setIsOpen(!isOpen);
   };
 
-  const filteredWorkouts = workouts
-    ? workouts.filter(
-        (workout) =>
-          valueStr === dateFormat(workout.createdAt, 'ddd mmm d yyyy')
-      )
-    : [];
+const filteredWorkouts = workouts
+  ? workouts.filter((workout) => {
+      const workoutDate = new Date(workout.createdAt);
+      return (
+        value.getDate() === workoutDate.getDate() &&
+        value.getMonth() === workoutDate.getMonth() &&
+        value.getFullYear() === workoutDate.getFullYear()
+      );
+    })
+  : [];
 
   function hasWorkoutsForDate(workouts, date) {
     const dateString = dateFormat(date, 'ddd mmm d yyyy');
@@ -130,7 +134,8 @@ function Home({ theme }) {
                 key={`${total.title}_${total.load}_${total.weightUnit}_total`}
               >
                 <p>
-                  {total.title} - {total.load} {total.weightUnit}{' '}
+                  {total.title} - {total.load !== 0 && `${total.load} `}
+                  {total.weightUnit}
                 </p>
                 <p>
                   Total Reps:{' '}
