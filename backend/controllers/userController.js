@@ -59,22 +59,61 @@ const resetPassword = async (req, res) => {
 
     await user.save();
 
+    const resetLink = `${process.env.PASSWORD_RESET_URL}/${resetToken}`;
+
     // Send password reset email using SendGrid
     const msg = {
       to: email,
       from: 'tomemetcalf@gmail.com',
       subject: 'Password Reset',
-      text: `Click the link to reset your password: ${resetToken}`,
+      text: `Click the link to reset your password: ${resetLink}`,
     };
-    
+
     await sgMail.send(msg);
 
     res.status(200).json({
-      message: 'Password reset token generated. Check your email for instructions.',
+      message:
+        'Password reset token generated. Check your email for instructions.',
     });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-module.exports = { signupUser, loginUser, resetPassword };
+// password reset
+const passwordReset = async (req, res) => {
+  const { resetToken, newPassword } = req.body;
+
+  try {
+    const user = await User.findOne({
+      resetToken,
+      resetTokenExpiration: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid or expired reset token' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+
+    user.password = hash;
+    user.resetToken = null;
+    user.resetTokenExpiration = null;
+    await user.save();
+
+    console.log('Password reset successful:', user.email);
+
+    res.status(200).json({
+      message:
+        'Password reset successful. You can now login with your new password.',
+    });
+  } catch (error) {
+    console.error('Error while resetting password:', error.message);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while resetting the password.' });
+  }
+};
+
+module.exports = { signupUser, loginUser, resetPassword, passwordReset };
