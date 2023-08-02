@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import { useAuthContext } from './hooks/useAuthContext';
 import { createContext, useEffect, useState } from 'react';
 import LightModeToggle from './components/LightModeToggle';
+import ResetPassword from './pages/ResetPassword';
 
 export const ThemeContext = createContext(null);
 
@@ -45,6 +46,7 @@ function App() {
                 element={!user ? <Login /> : <Navigate to="/" />}
               />
               <Route path="/reset-password" element={<PasswordReset />} />
+              <Route path="/password-reset/:resetToken" element={<ResetPassword />} />
             </Routes>
           </div>
         </BrowserRouter>
