@@ -114,6 +114,7 @@ const filteredWorkouts = workouts
           <div className="loading-text">
             <p>Loading workouts...</p>
           </div>
+          <div className="base"></div>
         </div>
       ) : (
         <>
@@ -181,6 +182,7 @@ const filteredWorkouts = workouts
         </>
       )}
       <WorkoutForm />
+      <div className="base"></div>
     </div>
   );
 }

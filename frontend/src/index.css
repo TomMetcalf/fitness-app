@@ -276,12 +276,12 @@ form.login button {
 }
 
 .base {
-  height: 200px;
+  height: 40vh;
   background-color: #ddd;
 }
 
 #dark .base {
-  height: 200px;
+  height: 40vh;
   background-color: #333;
 }
 
