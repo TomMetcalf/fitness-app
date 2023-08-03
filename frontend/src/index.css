@@ -353,13 +353,34 @@ select.workout-totals {
   font-size: 1em;
 }
 
-.password {
-  color: #333;
-  text-decoration: none;
+
+/* Password reset */
+
+form.password-reset {
+  height: 100vh;
+}
+
+#dark form.password-reset {
+  background-color: #333;
+  height: 100vh;
 }
 
 .password {
+  color: #333;
+  text-decoration: none;
+  font-size: small;
+}
+
+#dark .password {
   color: white;
+}
+
+.reset-email {
+  width: 200px;
+}
+
+.password-label {
+  margin-right: 10px;
 }
 
 /* React Calendar */

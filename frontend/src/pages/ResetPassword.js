@@ -8,7 +8,7 @@ const ResetPassword = () => {
 
   const handleResetPassword = async () => {
     try {
-      const response = await fetch('/api/reset-password', {
+      const response = await fetch('/api/user/password-reset', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,17 +24,23 @@ const ResetPassword = () => {
   };
 
   return (
-    <div>
-      <h2>Reset Password</h2>
+    <form className="password-reset" onSubmit={handleResetPassword}>
+      <h3>Reset Password</h3>
+      <p>
+        To reset your password, enter your new password in the box below and
+        click reset password.
+      </p>
+      <label className="form-label password-label">Email:</label>
       <input
         type="password"
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
-        placeholder="New Password"
+        placeholder="Enter new password here..."
+        className="reset-email"
       />
-      <button onClick={handleResetPassword}>Reset Password</button>
+      <button>Reset Password</button>
       <p>{message}</p>
-    </div>
+    </form>
   );
 };
 

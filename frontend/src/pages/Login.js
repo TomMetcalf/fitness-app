@@ -29,11 +29,13 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-
+        <Link className="password" to="/reset-password">
+          Forgotten your password? Click here to reset.
+        </Link>
         <button disabled={isLoading}>Log In</button>
         {error && <div className="error">{error}</div>}
       </form>
-      <Link className="password" to="/reset-password">Forgot your password?</Link>
+
       <div className="base"></div>
     </>
   );

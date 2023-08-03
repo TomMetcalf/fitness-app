@@ -13,13 +13,20 @@ const PasswordReset = () => {
   return (
     <form className="password-reset" onSubmit={handleSubmit}>
       <h3>Password Reset</h3>
-      <label className="form-label">Email:</label>
+      <p>
+        Need to reset your Password? <br />
+        <br /> Enter your email below to send a password reset to your
+        registered account.
+      </p>
+      <label className="form-label password-label">Email:</label>
       <input
         type="email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        className="reset-email"
+        placeholder='Enter email here...'
       />
-      <button disabled={isLoading}>Reset Password</button>
+      <button disabled={isLoading}>Send Password Reset</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
