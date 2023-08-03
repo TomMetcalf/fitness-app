@@ -49,12 +49,6 @@ export const useLogin = () => {
 
       if (!response.ok) {
         setError(json.error);
-      } else {
-        // If the reset token is sent in the response, you can access it from the json object
-        const resetToken = json.resetToken; // Replace 'resetToken' with the actual key used in the response
-
-        // You can now use the resetToken as needed, for example, you might want to store it in the state
-        // or pass it to another function to handle the password reset process on the frontend.
       }
     } catch (error) {
       setError('An error occurred while resetting the password.');
